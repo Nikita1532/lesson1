@@ -1,0 +1,61 @@
+Задача-1:
+# Следующая программа написана верно, однако содержит места потенциальных ошибок.
+# используя конструкцию try добавьте в код обработку соответствующих исключений.
+def avg(a, b):
+    if a * b >= 0:
+        return (a * b) ** 0.5
+    else:
+        raise ValueError("Невозможно определить среднее геометрическое "
+                         "введенных чисел.")
+try:
+    a = float(input("a = "))
+    b = float(input("b = "))
+    c = avg(a, b)
+    print("Среднее геометрическое = {:.2f}".format(c))
+except ValueError as err:
+    print("Ошибка:", err, ". Проверьте числа.")
+except Exception as err:
+    print("Ошибка:", err)
+
+Задача-2:
+# Напишите скрипт, создающий директории dir_1 - dir_9 в папке,
+# из которой запущен данный скрипт.
+# И второй скрипт, удаляющий эти папки.
+
+import os
+try:
+    for i in range(1, 10):
+        os.mkdir("dir_" + str(i))
+except:
+    print(" exist")
+a = input(" something enter ")
+print(a)
+try:
+    for i in range(3, 8):
+        os.rmdir("dir_" + str(i))
+except:
+    print("Already removed")
+
+# Задача-3:
+# Напишите скрипт, отображающий папки текущей директории.
+
+list = os.listdir()
+for i in list:
+    print(i)
+
+# Задача-4:
+# Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.
+
+import sys
+import os
+ 
+destdir = os.path.abspath('destdir')
+if not os.path.exists(destdir):
+    os.makedirs(destdir)
+   
+os.system('copy %s %s' % (__file__,destdir))
+os.system('copy %s %s' % (sys.argv[0],destdir))
+ 
+dirname,filename = os.path.split(__file__)
+content = open(__file__).read()
+open(os.path.join(destdir,filename),'w').write(content)
