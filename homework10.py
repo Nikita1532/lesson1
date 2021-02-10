@@ -65,7 +65,7 @@ class Person:
         return 'Person <{0} {1} {2}>'.format(self.last_name, self.first_name, self.mid_name)
 
 
-class Employee(Person):
+class Employe(Person):
 
     def __init__(self, last_name, first_name, mid_name, birth_dt, phone_num, emp_id, depart_id, salary):
         super().__init__(last_name, first_name, mid_name, birth_dt, phone_num)
